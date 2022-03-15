@@ -1,6 +1,6 @@
 # 前言
 
-主要对自己在学习和工作中遇到的比较经典和一些有意思的想法摘录。
+主要对自己在学习和工作中遇到的比较经典的笔记和一些有意思的想法摘录。
 
 # 我的收藏
 
@@ -13,6 +13,30 @@
 ## 知识系列
 
 [PostgreSQL数据库高手](https://github.com/digoal) - digoal
+
+
+
+[有赞技术团队](https://tech.youzan.com/) - 有赞
+
+[有赞技术博客-后端](https://tech.youzan.com/tag/back-end/)
+
+
+
+美团技术团队
+
+[腾讯技术团队](https://www.zhihu.com/column/tencent-TEG)
+
+阿里技术团队 
+
+寻找Java系列技术团队的技术博客...
+
+
+
+[技术团队清单 - 未筛选](https://blog.csdn.net/qq_23052951/article/details/79551971)
+
+
+
+
 
 ...
 
@@ -36,11 +60,29 @@
 
 
 
-# Java
+
+
+# 草稿 - 正在进行
+
+https://github.com/Snailclimb/JavaGuide
+
+https://tech.meituan.com/2022/01/13/phoenix-cdn.html
+
+
+
+https://www.zhihu.com/column/tencent-TEG
+
+
+
+# 技术文章
+
+
+
+## Java
 
 Java相关经典摘录。
 
-## 基础
+### 基础
 
 
 
@@ -61,7 +103,7 @@ Java相关经典摘录。
 
 
 
-## 集合
+### 集合
 
 
 
@@ -83,7 +125,7 @@ Java相关经典摘录。
 
 
 
-## 并发
+### 并发
 
 
 
@@ -104,13 +146,11 @@ Java相关经典摘录。
 
 
 
-
-
-## JVM
+### JVM
 
 
 
-## Java新特性
+### Java新特性
 
 
 
@@ -129,37 +169,35 @@ Java相关经典摘录。
 
 
 
-# 数据库
+## 数据库
 
 数据库相关经典摘录。
 
-## MySQL
+### MySQL
 
 
 
-# 缓存
+## 缓存
 
 缓存相关经典摘录。
 
-## Redis
+### Redis
 
 
 
 
 
-# 框架
+## 框架
 
-## Spring
-
-
-
-## Spring Boot
+### Spring
 
 
 
-## Spring Cloud
+### Spring Boot
 
 
+
+### Spring Cloud
 
 
 
@@ -167,13 +205,15 @@ Java相关经典摘录。
 
 
 
-# 消息队列
+
+
+## 消息队列
 
 
 
 
 
-## Kafka
+### Kafka
 
 Kafka经典文章
 
@@ -183,31 +223,29 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 
 
-# 版本控制
+## 版本控制
 
 
 
-## Git
+### Git
 
 
 
 
 
-## SVN
-
-
-
+### SVN
 
 
 
 
 
 
-# 系统设计
+
+## 系统设计
 
 
 
-## 设计模式
+### 设计模式
 
 
 
@@ -287,20 +325,9 @@ pitt1997
 
 
 
-# 数据结构
 
 
 
-
-
-
-
-
-
-
-
-
-# 计算机网络
 
 
 
@@ -309,6 +336,18 @@ pitt1997
 
 
 # 工作积累
+
+记录工作中的一些实践。
+
+## flutter项目实践
+
+### flutter实现指纹、手势等认证方式
+
+
+
+
+
+## arthus使用方法
 
 
 
@@ -326,6 +365,20 @@ pitt1997
 
 
 
+# 数据结构
+
+
+
+
+
+
+
+
+
+# 计算机网络
+
+
+
 # 简历
 
 
@@ -339,11 +392,3 @@ pitt1997
 
 
 
-
-
-
-
-
-# 草稿 - 正在进行
-
-https://github.com/Snailclimb/JavaGuide
