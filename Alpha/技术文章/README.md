@@ -2,7 +2,7 @@
 
 # 技术文章
 
-
+[2021年美团技术团队最受欢迎的22篇技术文章](https://tech.meituan.com/2022/01/01/2021-summary.html)
 
 
 [Redis源码解析 - 有赞](https://tech.youzan.com/redisyuan-ma-jie-xi/)
