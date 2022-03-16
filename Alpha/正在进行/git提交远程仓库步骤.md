@@ -49,6 +49,14 @@ git push origin master
 
 
 
+**git工程名称默认是main**
+
+```
+git push origin main
+```
+
+
+
 ## 遇到问题
 
 https://blog.csdn.net/rongxiang111/article/details/78825232
