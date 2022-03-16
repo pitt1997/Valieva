@@ -268,23 +268,9 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 
 
-## 分布式
-
-
-
-
-
 ## 高可用
 
-
-
-### Keepalived
-
-
-
-
-
-### 灾备设计和异地多活
+### 异地灾备
 
 **灾备**  = 容灾+备份。
 
@@ -295,15 +281,19 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 相关阅读：
 
+- [统一平台异地灾备解决方案](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%AD%A3%E5%9C%A8%E8%BF%9B%E8%A1%8C/%E7%BB%9F%E4%B8%80%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%BC%82%E5%9C%B0%E7%81%BE%E5%A4%87%E5%8F%AF%E7%94%A8%E6%80%A7%E6%96%B9%E6%A1%88/%E7%BB%9F%E4%B8%80%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%BC%82%E5%9C%B0%E7%81%BE%E5%A4%87%E5%8F%AF%E7%94%A8%E6%80%A7%E6%96%B9%E6%A1%88.md)
+
 * [搞懂异地多活，看这篇就够了](https://mp.weixin.qq.com/s/T6mMDdtTfBuIiEowCpqu6Q)
 * [四步构建异地多活](https://mp.weixin.qq.com/s/hMD-IS__4JE5_nQhYPYSTg)
-* [《从零开始学架构》— 28 | 业务高可用的保障：异地多活架构](
+
+### Keepalived
+
+...
 
 
 
+## 分布式
 
-
-pitt1997
 
 
 
@@ -343,6 +333,20 @@ pitt1997
 
 ### flutter实现指纹、手势等认证方式
 
+指纹认证：
+
+
+
+手势认证：
+
+
+
+静态密码：
+
+
+
+
+
 
 
 
@@ -351,11 +355,19 @@ pitt1997
 
 
 
+## pg_upgrade - 升级PostgreSQL服务器实例
 
 
 
+## 统一平台异地灾备解决方案
 
+相关阅读：
 
+[统一平台异地灾备解决方案](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%AD%A3%E5%9C%A8%E8%BF%9B%E8%A1%8C/%E7%BB%9F%E4%B8%80%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%BC%82%E5%9C%B0%E7%81%BE%E5%A4%87%E5%8F%AF%E7%94%A8%E6%80%A7%E6%96%B9%E6%A1%88/%E7%BB%9F%E4%B8%80%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%BC%82%E5%9C%B0%E7%81%BE%E5%A4%87%E5%8F%AF%E7%94%A8%E6%80%A7%E6%96%B9%E6%A1%88.md)
+
+bucardo安装实践
+
+cas单点登录集群实践
 
 
 
