@@ -12,15 +12,9 @@
 
 ## 知识系列
 
-[PostgreSQL数据库高手](https://github.com/digoal) - digoal
-
-
-
 [有赞技术团队](https://tech.youzan.com/) - 有赞
 
 [有赞技术博客-后端](https://tech.youzan.com/tag/back-end/)
-
-
 
 美团技术团队
 
@@ -28,15 +22,15 @@
 
 阿里技术团队 
 
-寻找Java系列技术团队的技术博客...
-
-
+Java系列技术团队技术博客...
 
 [技术团队清单 - 未筛选](https://blog.csdn.net/qq_23052951/article/details/79551971)
 
 
 
+数据库相关
 
+[PostgreSQL数据库高手](https://github.com/digoal) - digoal
 
 ...
 
@@ -68,8 +62,6 @@ https://github.com/Snailclimb/JavaGuide
 
 https://tech.meituan.com/2022/01/13/phoenix-cdn.html
 
-
-
 https://www.zhihu.com/column/tencent-TEG
 
 
@@ -83,6 +75,16 @@ https://www.zhihu.com/column/tencent-TEG
 Java相关经典摘录。
 
 ### 基础
+
+[Java 到底是值传递还是引用传递](https://www.zhihu.com/question/31203609)
+
+Java中方法参数传递方式是按值传递，如果参数是基本类型，传递的是基本类型的字面量值的拷贝，如果参数是引用类型，传递的是该参量所引用的对象在堆中地址值的拷贝...
+
+
+
+
+
+
 
 
 
@@ -201,17 +203,7 @@ Java相关经典摘录。
 
 
 
-
-
-
-
-
-
 ## 消息队列
-
-
-
-
 
 ### Kafka
 
@@ -221,21 +213,23 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 
 
-
-
 ## 版本控制
 
 
 
 ### Git
 
+[Git简单介绍](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Git/git%E4%BB%8B%E7%BB%8D.md)
+
+[Git常遇问题处理记录](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Git/git%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95.md)
+
+[Git提交远程仓库步骤](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Git/git%E6%8F%90%E4%BA%A4%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%AD%A5%E9%AA%A4.md)
+
 [git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html) - 有趣
 
-[图解Git](http://marklodato.github.io/visual-git-guide/index-zh-cn.html)
+[图解Git](http://marklodato.github.io/visual-git-guide/index-zh-cn.html) - 有趣生动
 
-Git常遇问题处理记录
 
-Git常用操作命令
 
 ### SVN
 
@@ -243,15 +237,7 @@ Git常用操作命令
 
 ## 系统设计
 
-
-
 ### 设计模式
-
-
-
-
-
-
 
 
 
@@ -327,33 +313,17 @@ Git常用操作命令
 
 记录工作中的一些实践。
 
-## flutter项目实践
-
-### flutter实现指纹、手势等认证方式
-
-指纹认证：
-
-
-
-手势认证：
-
-
-
-静态密码：
-
-
-
-
-
-
-
-
-
 ## arthus使用方法
 
 
 
+
+
 ## pg_upgrade - 升级PostgreSQL服务器实例
+
+
+
+
 
 
 
@@ -366,6 +336,16 @@ Git常用操作命令
 bucardo安装实践
 
 cas单点登录集群实践
+
+
+
+## flutter项目实践
+
+### flutter实现指纹、手势等认证方式
+
+指纹认证：手势认证：静态密码：
+
+
 
 
 
@@ -396,7 +376,6 @@ cas单点登录集群实践
 
 
 # 面经摘录
-
 
 
 
