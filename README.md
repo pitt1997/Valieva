@@ -335,7 +335,7 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 bucardo安装实践
 
-cas单点登录集群实践
+cas单点登录集群部署实践
 
 
 
