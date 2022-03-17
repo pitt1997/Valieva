@@ -335,7 +335,7 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 bucardo安装实践
 
-cas单点登录集群部署实践
+[cas单点登录集群部署实践](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E9%AB%98%E5%8F%AF%E7%94%A8/CAS%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E5%AE%9E%E8%B7%B5.md)
 
 
 
