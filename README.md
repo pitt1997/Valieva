@@ -367,6 +367,12 @@ bucardo安装实践
 
 # 计算机网络
 
+## HTTP
+
+[细说Http中的Keep-Alive和Java Http中的Keep-Alive机制](https://segmentfault.com/a/1190000020370495)
+
+
+
 
 
 # 简历

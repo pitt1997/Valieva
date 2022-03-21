@@ -82,6 +82,49 @@ PGPASSWORD=123456 psql -h 127.0.0.1 -p 5432 -d basicframe -U basicframe -c "SELE
 PGPASSWORD=123456 psql -h 127.0.0.1 -p 5432 -d basicframe -U basicframe -c "COPY (SELECT * FROM DUAL) TO STDOUT CSV" > rolename.csv
 ```
 
+## 查询索引
+
+指定tablename查询表是否包含索引
+
+```sql
+select * from pg_indexes where tablename = 't_user';
+```
+
+### PostgreSQL - 查询所有索引
+
+`pg_indexes` 是一个视图，可以通过它获取某个表的[索引](https://so.csdn.net/so/search?q=索引&spm=1001.2101.3001.7020)信息。`pg_indexes`的定义如下：
+
+```
+SELECT
+	n.nspname AS schemaname,
+    c.relname AS tablename,
+    i.relname AS indexname,
+    t.spcname AS tablespace,
+    pg_get_indexdef(i.oid) AS indexdef
+FROM pg_index x
+    JOIN pg_class c ON c.oid = x.indrelid
+    JOIN pg_class i ON i.oid = x.indexrelid
+    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+    LEFT JOIN pg_tablespace t ON t.oid = i.reltablespace
+WHERE (c.relkind = ANY (ARRAY['r'::"char", 'm'::"char"])) AND i.relkind = 'i'::"char";
+```
+
+例如从 `pg_indexes`中获取pg系统表`pg_index`表的索引信息：
+
+```
+select * from pg_indexes where tablename = 'pg_index';
+```
+
+查询结果
+
+```
+schemaname | tablename |         indexname         | tablespace |                                           indexdef
+------------+-----------+---------------------------+------------+-----------------------------------------------------------------------------------------------
+ pg_catalog | pg_index  | pg_index_indrelid_index   |            | CREATE INDEX pg_index_indrelid_index ON pg_catalog.pg_index USING btree (indrelid)
+ pg_catalog | pg_index  | pg_index_indexrelid_index |            | CREATE UNIQUE INDEX pg_index_indexrelid_index ON pg_catalog.pg_index USING btree (indexrelid)
+(2 rows)
+```
+
 ## 创建索引
 
 ```sql
@@ -91,6 +134,12 @@ SELECT * FROM t_auth_r_master_slave WHERE masterid = '1170293';
 CREATE INDEX masterid_index ON t_auth_r_master_slave (masterid);
 -- 0.051  将近10倍速
 SELECT * FROM t_auth_r_master_slave WHERE masterid = '1170293';
+```
+
+## 删除索引
+
+```sql
+DROP INDEX status_index;
 ```
 
 ## 查看postgresql进程
