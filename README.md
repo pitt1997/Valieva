@@ -26,8 +26,6 @@ Java系列技术团队技术博客...
 
 [技术团队清单 - 未筛选](https://blog.csdn.net/qq_23052951/article/details/79551971)
 
-
-
 数据库相关
 
 [PostgreSQL数据库高手](https://github.com/digoal) - digoal
@@ -44,6 +42,8 @@ Java系列技术团队技术博客...
 
 [敖丙的github](https://github.com/AobingJava/JavaFamily) - 敖丙
 
+[敖丙的B站面试视频](https://space.bilibili.com/130763764/video) - 面试
+
 [CS-Notes](https://github.com/CyC2018/CS-Notes) - CyC2018
 
 [对线面试官系列](https://mp.weixin.qq.com/s?__biz=MzU4NzA3MTc5Mg==&mid=2247484508&idx=1&sn=4e81d365409bf32c08e4ea985e3ca593&chksm=fdf0ec03ca876515d59c49f033cf83f72b62fafe356e678b4d162ad3623d31bf60fb6620176f&scene=178&cur_album_id=1657204970858872832#rd) - Java3y 
@@ -56,19 +56,7 @@ Java系列技术团队技术博客...
 
 
 
-# 草稿 - 正在进行
-
-https://github.com/Snailclimb/JavaGuide
-
-https://tech.meituan.com/2022/01/13/phoenix-cdn.html
-
-https://www.zhihu.com/column/tencent-TEG
-
-
-
 # 技术文章
-
-
 
 ## Java
 
@@ -76,15 +64,17 @@ Java相关经典摘录。
 
 ### 基础
 
-[Java 到底是值传递还是引用传递](https://www.zhihu.com/question/31203609)
+[Java值传递](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E5%80%BC%E4%BC%A0%E9%80%92.md)
 
-Java中方法参数传递方式是按值传递，如果参数是基本类型，传递的是基本类型的字面量值的拷贝，如果参数是引用类型，传递的是该参量所引用的对象在堆中地址值的拷贝...
+[Java初始化顺序](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F.md)
 
+[Java构造函数](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.md)
 
+[Java语言main方法](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E8%AF%AD%E8%A8%80main%E6%96%B9%E6%B3%95.md)
 
+[Java中的clone方法](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E4%B8%AD%E7%9A%84clone%E6%96%B9%E6%B3%95.md)
 
-
-
+[Java作用域](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
 
 
 
@@ -175,6 +165,14 @@ Java中方法参数传递方式是按值传递，如果参数是基本类型，�
 
 数据库相关经典摘录。
 
+### PostgreSQL
+
+[PostgreSQL常用命令](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL/PostgreSQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md)
+
+[pg_upgrade 升级PostgreSQL服务器实例](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL/pg_update%20%20%E5%8D%87%E7%BA%A7PotsgreSQL%E6%95%B0%E6%8D%AE%E5%BA%93.md)
+
+
+
 ### MySQL
 
 
@@ -185,7 +183,13 @@ Java中方法参数传递方式是按值传递，如果参数是基本类型，�
 
 ### Redis
 
+[《吊打面试官》系列-缓存雪崩、击穿、穿透](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
 
+Redis布隆过滤器原理
+
+Redis防止缓存击穿布隆过滤器实战
+
+Redis敖丙在蘑菇街的技术分享
 
 
 
@@ -315,15 +319,9 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 ## arthus使用方法
 
+[通过arthas排查线上Tomcat问题](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/%E9%80%9A%E8%BF%87arthas%E6%8E%92%E6%9F%A5%E7%BA%BF%E4%B8%8ATomcat%E9%97%AE%E9%A2%98.md)
 
-
-
-
-## pg_upgrade - 升级PostgreSQL服务器实例
-
-
-
-
+[线上环境数据库查询卡住问题排查记录](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/%E7%BA%BF%E4%B8%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2%E5%8D%A1%E4%BD%8F%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95.md)
 
 
 
@@ -384,4 +382,16 @@ bucardo安装实践
 # 面经摘录
 
 
+
+
+
+
+
+# 草稿 - 正在进行
+
+https://github.com/Snailclimb/JavaGuide
+
+https://tech.meituan.com/2022/01/13/phoenix-cdn.html
+
+https://www.zhihu.com/column/tencent-TEG
 
