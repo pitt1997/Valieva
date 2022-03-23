@@ -4,9 +4,9 @@
 
 # 我的收藏
 
-有趣网站的摘录。
-
 ## 有趣网站
+
+有趣网站的摘录。
 
 ...
 
@@ -52,9 +52,15 @@ Java系列技术团队技术博客...
 
 [程序员小灰](https://www.zhihu.com/column/c_144466663) - 小灰
 
+...
 
+## 我的整理
 
+[工作积累](https://github.com/pitt1997/Valieva/tree/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF)
 
+[技术文章](https://github.com/pitt1997/Valieva/tree/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0)
+
+...
 
 # 技术文章
 
@@ -76,7 +82,7 @@ Java相关经典摘录。
 
 [Java作用域](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E5%9F%BA%E7%A1%80/Java%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
 
-
+...
 
 **知识点/面试题** : 
 
@@ -97,11 +103,9 @@ Java相关经典摘录。
 
 ### 集合
 
-Java集合
+[Java集合](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java/%E9%9B%86%E5%90%88/Java%E5%AE%B9%E5%99%A8.md)
 
-
-
-
+...
 
 **知识点/面试题** ：
 
@@ -117,13 +121,7 @@ Java集合
 
 
 
-
-
-
-
 ### 并发
-
-
 
 **知识点/面试题** : 
 
@@ -140,13 +138,11 @@ Java集合
 
 
 
-
-
 ### JVM
 
+...
 
-
-### Java新特性
+### 新特性
 
 
 
@@ -156,12 +152,6 @@ Java集合
 4.  [Java 11 新特性概览](./docs/java/new-features/java11.md)
 5.  [Java 12~13 新特性概览](./docs/java/new-features/java12-13.md)
 6.  [Java 14~15 新特性概览](./docs/java/new-features/java14-15.md)
-
-
-
-
-
-
 
 
 
@@ -175,9 +165,13 @@ Java集合
 
 [pg_upgrade 升级PostgreSQL服务器实例](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL/pg_update%20%20%E5%8D%87%E7%BA%A7PotsgreSQL%E6%95%B0%E6%8D%AE%E5%BA%93.md)
 
+...
+
 ### MySQL
 
-MySQL数据库常用文档
+[MySQL数据库常用文档](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%96%87%E6%A1%A3.md)
+
+...
 
 ## 缓存
 
@@ -185,43 +179,33 @@ MySQL数据库常用文档
 
 ### Redis
 
-[《吊打面试官》系列-缓存雪崩、击穿、穿透](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
+[缓存雪崩、击穿、穿透](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg) - 吊打面试官系列
 
-Redis布隆过滤器原理
+[Redis布隆过滤器原理](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Redis/Redis%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86.md)
 
-Redis防止缓存击穿布隆过滤器实战
+[Redis防止缓存击穿布隆过滤器实战](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Redis/Redis%E9%98%B2%E6%AD%A2%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%AE%9E%E6%88%98.md)
 
-Redis敖丙在蘑菇街的技术分享
+[Redis敖丙在蘑菇街的技术分享](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Redis/Redis%E6%95%96%E4%B8%99%E5%9C%A8%E8%98%91%E8%8F%87%E8%A1%97%E7%9A%84%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB.md)
 
-
+...
 
 ## 框架
 
 ### Spring
 
-
-
 ### Spring Boot
 
-
-
 ### Spring Cloud
-
-
 
 ## 消息队列
 
 ### Kafka
 
-Kafka经典文章
+[Kafka经典文章](https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw)
 
-https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
-
-
+...
 
 ## 版本控制
-
-
 
 ### Git
 
@@ -235,30 +219,18 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 [图解Git](http://marklodato.github.io/visual-git-guide/index-zh-cn.html) - 有趣生动
 
-
-
 ### SVN
-
-
 
 ## 系统设计
 
 ### 设计模式
 
-
-
 # 互联网
-
-
 
 ## Docker
 
 - [Docker 基本概念解读](https://github.com/Snailclimb/JavaGuide/blob/main/docs/tools/docker/docker-intro.md)
 - [Docker从入门到上手干事](https://github.com/Snailclimb/JavaGuide/blob/main/docs/tools/docker/docker-in-action.md)
-
-
-
-
 
 ## 高可用
 
@@ -280,13 +252,7 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 ...
 
-
-
 ## 分布式
-
-
-
-
 
 
 
@@ -295,23 +261,9 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 ## Nginx
 
-
-
-
+[Nginx入门整理](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E7%BD%91%E5%85%B3/nginx/NGINX.md)
 
 ## Traefik
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -325,19 +277,15 @@ https://mp.weixin.qq.com/s/8wfZEsNDpeLr-_uu2CawFw
 
 [线上环境数据库查询卡住问题排查记录](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/%E7%BA%BF%E4%B8%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2%E5%8D%A1%E4%BD%8F%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95.md)
 
-
+...
 
 ## 统一平台异地灾备解决方案
 
-相关阅读：
-
 [统一平台异地灾备解决方案](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%AD%A3%E5%9C%A8%E8%BF%9B%E8%A1%8C/%E7%BB%9F%E4%B8%80%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%BC%82%E5%9C%B0%E7%81%BE%E5%A4%87%E5%8F%AF%E7%94%A8%E6%80%A7%E6%96%B9%E6%A1%88/%E7%BB%9F%E4%B8%80%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%BC%82%E5%9C%B0%E7%81%BE%E5%A4%87%E5%8F%AF%E7%94%A8%E6%80%A7%E6%96%B9%E6%A1%88.md)
-
-bucardo安装实践
 
 [cas单点登录集群部署实践](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E9%AB%98%E5%8F%AF%E7%94%A8/CAS%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E5%AE%9E%E8%B7%B5.md)
 
-
+bucardo安装实践
 
 ## flutter项目实践
 
@@ -347,23 +295,21 @@ bucardo安装实践
 
 
 
+## 单点登录认证
 
+[CAS认证](https://github.com/pitt1997/Valieva/tree/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/CAS%E8%AE%A4%E8%AF%81)
+
+[CAS委托认证](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/CAS%E8%AE%A4%E8%AF%81/cas%E5%A7%94%E6%89%98%E8%AE%A4%E8%AF%81/cas%E5%A7%94%E6%89%98%E8%AE%A4%E8%AF%81.md)
+
+[CAS单点登录集群部署实践](https://github.com/pitt1997/Valieva/blob/main/Alpha/%E5%B7%A5%E4%BD%9C%E7%A7%AF%E7%B4%AF/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/CAS%E8%AE%A4%E8%AF%81/CAS%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E5%AE%9E%E8%B7%B5.md)
 
 # 项目经验
 
-
-
-
+...
 
 # 数据结构
 
-
-
-
-
-
-
-
+...
 
 # 计算机网络
 
@@ -373,19 +319,11 @@ bucardo安装实践
 
 
 
-
-
 # 简历
 
-
-
-
+简历模板
 
 # 面经摘录
-
-
-
-
 
 
 
@@ -396,4 +334,3 @@ https://github.com/Snailclimb/JavaGuide
 https://tech.meituan.com/2022/01/13/phoenix-cdn.html
 
 https://www.zhihu.com/column/tencent-TEG
-
