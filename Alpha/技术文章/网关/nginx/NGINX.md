@@ -348,7 +348,7 @@ https://blog.csdn.net/haitun312366/article/details/8511475
 
 正向代理类似一个跳板机，代理访问外部资源，比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌。
 
-![1623165823846](C:\Users\17996\AppData\Roaming\Typora\typora-user-images\1623165823846.png)
+<img src="images\1623165823846.png" alt="1623165823846" style="zoom:100%;" />
 
 **正向代理的用途：**
 
@@ -364,7 +364,7 @@ https://blog.csdn.net/haitun312366/article/details/8511475
 
 反向代理（Reverse Proxy）实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。
 
-![1623165907703](C:\Users\17996\AppData\Roaming\Typora\typora-user-images\1623165907703.png)
+<img src="images\1623165907703.png" alt="1623165907703" style="zoom:100%;" />
 
 **反向代理的作用：**
 

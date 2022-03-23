@@ -891,6 +891,329 @@ SELECT
             schemaname = 'public'
 ```
 
-## 经典的postgreSQL数据解决方案文章
+## 分组后拼接多行
 
-https://my.oschina.net/Kenyon?tab=newest&catalogId=317791&sortType=time
+分组查询结果做字段拼接
+
+| name_type | name |
+| --------- | ---- |
+| 1         | 张三 |
+| 2         | 李四 |
+| 3         | 王五 |
+| 1         | 张四 |
+| 2         | 李五 |
+| 2         | 李一 |
+
+需求是根据name_type分组，李姓的在一组，张姓的分为一组，查询结果如下：
+
+| name_type | names          |
+| --------- | -------------- |
+| 1         | 张三,张四      |
+| 2         | 李四,李五,李一 |
+| 3         | 王五           |
+
+MySQL可以很方便的利用group_concat函数来实现，但是postgres9.0版本之前没有这样的函数，需要进行自定义函数【参考[博客](https://blog.csdn.net/wlwlwlwl015/article/details/50323791)】。我们可以用**【array_agg()】,【string_agg()】**等函数来实现。注意string_agg()方法参数都必须为字符串。
+
+**array_agg**
+
+```sql
+select 
+	name_type,array_to_string(array_agg(name),',') as names
+from 
+	t_acc_user
+group by 
+	name_type;
+```
+
+**string_agg**
+
+```sql
+select 
+	name_type, string_agg(name,',') as names
+from 
+	t_acc_user
+group by 
+	name_type;
+```
+
+## 根据条件修改对应字段
+
+```sql
+-- t_acc_master_mapping:映射表  name_old：旧  name_new:新 
+UPDATE t_acc_master t01	
+SET name = t02.name_new
+FROM
+(SELECT * FROM t_acc_master_mapping) t02
+WHERE  t01.name = t02.name_old AND t01.status = 'normal';
+```
+
+## 锁表问题解决
+
+在使用pgsql删除数据库表（DROP）操作时候出现阻塞的现象，由此怀疑是锁表导致。
+
+> 排查数据库表是否锁住
+
+```sql
+SELECT oid FROM pg_class WHERE relname = 't_user'; -- 可能锁表的表名
+SELECT pid FROM pg_locks WHERE relation = '2523'; -- 由上面查出的oid
+```
+
+如果上面的SQL查询到了结果，则表示该表被锁，执行下面SQL释放锁定
+
+```sql
+SELECT pg_cancel_backend('100045');  -- 上面查到的pid
+```
+
+## ctid的浅谈
+
+ctid： 表示数据记录的物理行当信息，指的是 一条记录位于哪个数据块的哪个位移上面。 跟oracle中伪列 rowid 的意义一样的，只是形式不一样。例如这有个一表t_org_user，查看每行记录的ctid情况：
+
+```sql
+SELECT ctid, * FROM t_org_user;
+```
+
+查询结果，格式(blockid,itemid)，拿其中(0,1)来说，0表示块id，1表示在这块第一条记录。
+
+```
+ctid |  id | name | cnname
+(0,1)	1	data01	测试01
+(0,2)	2	data02	测试02
+(0,3)	3	data01	测试01
+(0,4)	1	data01	测试01
+```
+
+#### ctid去重
+
+我们知道rowid在oracle有个重要的作用；被用作表记录去重；同理 ctid在postgresql里面同样可以使用。例如t_org_user表id为1有两条记录
+
+```sql
+DELETE FROM t_org_user 
+WHERE ctid NOT IN ( SELECT min( ctid ) FROM t_org_user GROUP BY id );
+```
+
+根据id去重后
+
+```
+ctid |  id | name | cnname
+(0,1)	1	data01	测试01
+(0,2)	2	data02	测试02
+(0,3)	3	data01	测试01
+```
+
+刚刚我们删除了(0,4)这条记录，现在我们重新插入一条新的记录之后查询
+
+```
+ctid |  id | name | cnname
+(0,1)	1	data01	测试01
+(0,2)	2	data02	测试02
+(0,3)	3	data01	测试01
+(0,5)	1	data01	测试01
+```
+
+**为什么不是(0,4)，而是(0,5)？**这个跟postgresql多版本事务有关，这是postgresql的特性，postgresql里面没有回滚段的概念，那怎么把(0,5)在显示呢？想这块(0,5)的空间再存放数据，postgresql里面有**AUTOVACUUM**进程，当然我们也可以手动回收这段空间；
+
+删除（0,5）这条数据之后执行：
+
+```sql
+vacuum t_org_user;
+```
+
+再次插入之后就是从(0,4)开始的，**vacuum**: 回收未显示的物理位置；标明可以继续使用。
+
+```sql
+select relpages,reltuples from pg_class where relname = 't_org_user';
+```
+
+我们可以借助系统视图**pg_class**，其中relpages，reltuples分别代表块数，记录数
+
+## generate_series序列函数
+
+```sql
+INSERT INTO t_org_user 
+SELECT generate_series ( 1, 1000 ), 'data' || generate_series ( 1, 1000 ), '中文' || generate_series ( 1, 1000 );
+```
+
+generate_series为一个序列函数，例如产生1-100就是generate_series(1,100)，产生0-100直接的偶数就是generate_series(0,100,2)，其中的0表示序列开始位置；100代表结束位置；2为偏移量。
+
+
+
+## 未指定字段类型问题（type "unknown"）
+
+```sql
+SELECT (array_to_string(array_agg(t.cmdaudit),'#!')) as cmdaudit 
+FROM ( SELECT 'test-new-xx' as cmdaudit from t_acc_master ) t
+```
+
+postgres数据库较低版本（9.3.6）存在以下问题，这里的问题是`'' as name`实际上并没有为值指定类型。这是`unknown`类型，而 PostgreSQL 通常从诸如您将其插入到哪个列或您将其传递给哪个函数之类的东西推断出真正的类型。
+
+```
+Could not determine polymorphic type because input has type "unknown"
+```
+
+类型化定义
+
+```
+TEXT '' AS name
+```
+
+CAST
+
+```
+CAST('' AS text) AS name
+```
+
+**PostgreSQL 简写**
+
+```sql
+''::text
+```
+
+案例
+
+```sql
+SELECT (array_to_string(array_agg(t.cmdaudit),'#!')) as cmdaudit 
+FROM ( SELECT 'test-new-xx' ::text as cmdaudit from t_acc_master ) t
+
+SELECT (array_to_string(array_agg(t.cmdaudit),'#!')) as cmdaudit FROM ( 
+SELECT VARCHAR 'test-new-xx' as cmdaudit from t_acc_master ) t
+
+SELECT (array_to_string(array_agg(t.cmdaudit),'#!')) as cmdaudit FROM ( 
+SELECT TEXT 'test-new-xx' as cmdaudit from t_acc_master ) t
+
+SELECT (array_to_string(array_agg(t.cmdaudit),'#!')) as cmdaudit FROM ( 
+SELECT CAST('test-new-xx' AS text) as cmdaudit from t_acc_master ) t
+```
+
+## 自定义函数索引丢失
+
+测试场景:  t_auth_r_master_slave授权表 200w 行数据，masterId、resId有索引 ：
+
+```sql
+CREATE INDEX resid_index ON t_auth_r_master_slave (resid);
+CREATE INDEX masterid_index ON t_auth_r_master_slave (masterid);
+```
+
+### **EXPLAIN ANALYZE进行分析**	
+
+```sql
+EXPLAIN ANALYZE
+SELECT * FROM t_auth_r_master_slave LIMIT 10
+SELECT count(*) FROM t_auth_r_master_slave 
+```
+
+使用函数get_master_auth耗时11s
+
+```sql
+EXPLAIN ANALYZE
+
+select
+        t.id,t.ruleid,t.masterid,t.resid 
+from 
+        get_master_auth('del') t 
+where 
+        t.masterid = '1140131' and t.resid = '38100217' and t.slaveid is null;
+
+Function Scan on get_master_auth t  (cost=0.25..15.25 rows=1 width=872) (actual time=9719.881..10632.622 rows=2 loops=1)
+  Filter: (((masterid)::text = '1140131'::text) AND ((resid)::text = '38100217'::text))
+  Rows Removed by Filter: 2463409
+Total runtime: 10721.853 ms
+```
+
+使用原始sql耗时0.01s
+
+```sql
+EXPLAIN ANALYZE
+select
+        t.id,t.ruleid,t.masterid,t.resid 
+from 
+        (
+        SELECT 
+                t.* 
+        FROM 
+                t_auth_r_master_slave t
+            JOIN t_acc_master m ON m.id=t.masterid AND m.status !='del'
+            JOIN t_auth_res r ON r.id=t.resid AND r.status !='del'
+            JOIN t_acc_slave s ON s.id=t.slaveid and s.status != 'del'
+        WHERE 
+                t.status!='del'
+        UNION ALL
+        SELECT 
+                t.* 
+        FROM 
+                t_auth_r_master_slave t
+            JOIN t_acc_master m ON m.id=t.masterid AND m.status !='del'
+            JOIN t_auth_res r ON r.id=t.resid AND r.status !='del'
+        WHERE 
+                t.status!='del' and t.slaveid is null
+        ) t 
+where 
+        t.masterid = '1' and t.resid = '1' and t.slaveid is null;
+```
+
+匹配上索引:Bitmap Index Scan on resid_index...
+
+```sql
+Append  (cost=749.97..1555.83 rows=2 width=35) (actual time=513.408..513.408 rows=0 loops=1)
+  ->  Subquery Scan on "*SELECT* 1"  (cost=749.97..782.07 rows=1 width=35) (actual time=506.057..506.057 rows=0 loops=1)
+        ->  Nested Loop  (cost=749.97..782.06 rows=1 width=1398) (actual time=506.055..506.055 rows=0 loops=1)
+              ->  Nested Loop  (cost=749.68..773.74 rows=1 width=1398) (actual time=506.053..506.053 rows=0 loops=1)
+                    ->  Nested Loop  (cost=749.39..765.43 rows=1 width=1398) (actual time=506.052..506.052 rows=0 loops=1)
+                          ->  Bitmap Heap Scan on t_auth_r_master_slave t  (cost=749.11..757.12 rows=1 width=1398) (actual time=506.050..506.050 rows=0 loops=1)
+                                Recheck Cond: (((resid)::text = '38100217'::text) AND ((masterid)::text = '1140131'::text))
+                                Rows Removed by Index Recheck: 9
+                                Filter: ((slaveid IS NULL) AND ((status)::text <> 'del'::text))
+                                Rows Removed by Filter: 2
+                                ->  BitmapAnd  (cost=749.11..749.11 rows=2 width=0) (actual time=505.392..505.392 rows=0 loops=1)
+                                      ->  Bitmap Index Scan on resid_index  (cost=0.00..14.54 rows=281 width=0) (actual time=12.929..12.929 rows=70 loops=1)
+                                            Index Cond: ((resid)::text = '38100217'::text)
+                                      ->  Bitmap Index Scan on masterid_index  (cost=0.00..734.32 rows=21586 width=0) (actual time=492.214..492.214 rows=22169 loops=1)
+                                            Index Cond: ((masterid)::text = '1140131'::text)
+                          ->  Index Scan using t_acc_master_pkey on t_acc_master m  (cost=0.28..8.30 rows=1 width=7) (never executed)
+                                Index Cond: ((id)::text = '1140131'::text)
+                                Filter: ((status)::text <> 'del'::text)
+                    ->  Index Scan using t_auth_res_pkey on t_auth_res r  (cost=0.29..8.31 rows=1 width=9) (never executed)
+                          Index Cond: ((id)::text = '38100217'::text)
+                          Filter: ((status)::text <> 'del'::text)
+              ->  Index Scan using t_acc_slave_pkey on t_acc_slave s  (cost=0.29..8.31 rows=1 width=9) (never executed)
+                    Index Cond: ((id)::text = (t.slaveid)::text)
+                    Filter: ((status)::text <> 'del'::text)
+  ->  Subquery Scan on "*SELECT* 2"  (cost=749.68..773.75 rows=1 width=35) (actual time=7.348..7.348 rows=0 loops=1)
+        ->  Nested Loop  (cost=749.68..773.74 rows=1 width=1398) (actual time=7.346..7.346 rows=0 loops=1)
+              ->  Nested Loop  (cost=749.39..765.43 rows=1 width=1398) (actual time=7.345..7.345 rows=0 loops=1)
+                    ->  Bitmap Heap Scan on t_auth_r_master_slave t_1  (cost=749.11..757.12 rows=1 width=1398) (actual time=7.343..7.343 rows=0 loops=1)
+                          Recheck Cond: (((resid)::text = '38100217'::text) AND ((masterid)::text = '1140131'::text))
+                          Rows Removed by Index Recheck: 9
+                          Filter: ((slaveid IS NULL) AND (slaveid IS NULL) AND ((status)::text <> 'del'::text))
+                          Rows Removed by Filter: 2
+                          ->  BitmapAnd  (cost=749.11..749.11 rows=2 width=0) (actual time=7.315..7.315 rows=0 loops=1)
+                                ->  Bitmap Index Scan on resid_index  (cost=0.00..14.54 rows=281 width=0) (actual time=0.075..0.075 rows=70 loops=1)
+                                      Index Cond: ((resid)::text = '38100217'::text)
+                                ->  Bitmap Index Scan on masterid_index  (cost=0.00..734.32 rows=21586 width=0) (actual time=7.122..7.122 rows=22169 loops=1)
+                                      Index Cond: ((masterid)::text = '1140131'::text)
+                    ->  Index Scan using t_acc_master_pkey on t_acc_master m_1  (cost=0.28..8.30 rows=1 width=7) (never executed)
+                          Index Cond: ((id)::text = '1140131'::text)
+                          Filter: ((status)::text <> 'del'::text)
+              ->  Index Scan using t_auth_res_pkey on t_auth_res r_1  (cost=0.29..8.31 rows=1 width=9) (never executed)
+                    Index Cond: ((id)::text = '38100217'::text)
+                    Filter: ((status)::text <> 'del'::text)
+Total runtime: 514.501 ms
+```
+
+https://www.jb51.cc/postgresql/192456.html
+
+https://blog.csdn.net/u011944141/article/details/98056440
+
+
+
+
+
+## 相关参考
+
+[pgsql博客](https://www.cnblogs.com/lottu/category/535826.html)
+
+[pgsql数据迁移](https://www.cnblogs.com/lottu/category/838299.html)
+
+[pgsql高可用](https://www.cnblogs.com/lottu/category/841292.html)
+
+[经典的postgreSQL数据解决方案文章](https://my.oschina.net/Kenyon?tab=newest&catalogId=317791&sortType=time)
+
